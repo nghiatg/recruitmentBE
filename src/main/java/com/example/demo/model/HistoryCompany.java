@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "historyCongTy")
-@IdClass(IdHistoryCandidate.class)
+@IdClass(IdHistoryCompany.class)
 public class HistoryCompany {
 	@Id
     @ManyToOne

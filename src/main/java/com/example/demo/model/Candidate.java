@@ -24,6 +24,10 @@ public class Candidate {
 	@Column(name = "ten")
 	private String tenUngVien;
 	
+
+	@Column(name = "password")
+	private String password;
+	
 	@Column(name = "sdt")
 	private String sdt;
 	
@@ -85,6 +89,36 @@ public class Candidate {
 	}
 	public void setTrinhDoDaiHoc(String trinhDoDaiHoc) {
 		this.trinhDoDaiHoc = trinhDoDaiHoc;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public List<UngVienChungChi> getChungChi() {
+		return chungChi;
+	}
+	public void setChungChi(List<UngVienChungChi> chungChi) {
+		this.chungChi = chungChi;
+	}
+	public List<HistoryCandidate> getLichSuHanhDong() {
+		return lichSuHanhDong;
+	}
+	public void setLichSuHanhDong(List<HistoryCandidate> lichSuHanhDong) {
+		this.lichSuHanhDong = lichSuHanhDong;
+	}
+	public List<Job> getTinTuyenDung() {
+		return tinTuyenDung;
+	}
+	public void setTinTuyenDung(List<Job> tinTuyenDung) {
+		this.tinTuyenDung = tinTuyenDung;
+	}
+	public List<Company> getCongTy() {
+		return congTy;
+	}
+	public void setCongTy(List<Company> congTy) {
+		this.congTy = congTy;
 	}
 	
 	

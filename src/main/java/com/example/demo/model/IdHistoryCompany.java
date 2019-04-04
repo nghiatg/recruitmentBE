@@ -1,8 +1,9 @@
 package com.example.demo.model;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
-public class IdHistoryCompany {
+public class IdHistoryCompany implements Serializable {
 	private long congTy;
 
 	private long hanhDong;

@@ -1,11 +1,12 @@
 package com.example.demo.model;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class IdHistoryCandidate {
+public class IdHistoryCandidate implements Serializable {
 	private long ungVien;
 
 	private long hanhDong;
