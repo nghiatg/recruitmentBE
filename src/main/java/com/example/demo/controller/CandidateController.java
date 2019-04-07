@@ -21,25 +21,25 @@ public class CandidateController {
 	private CandidateService candidateServiceImpl;
 
 	@PostMapping(value = "/candidateRegister")
-	public byte[] addNews(@RequestBody String body) {
+	public byte[] addNews(@RequestBody String body) throws Exception {
 		System.out.println("add candidate");
 		JSONObject obj = new JSONObject(body);
 		String username;
 		try {
 			username = obj.getString("username");
-		} catch (JSONException e1) {
+		} catch (Exception e1) {
 			username = "";
 		}
 		String email;
 		try {
 			email = obj.getString("email");
-		} catch (JSONException e1) {
+		} catch (Exception e1) {
 			email = "";
 		}
 		String password;
 		try {
 			password = obj.getString("password");
-		} catch (JSONException e1) {
+		} catch (Exception e1) {
 			password = "";
 		}
 		Candidate newCandidate = candidateServiceImpl.registerCandidate(username, email, password);
@@ -47,7 +47,7 @@ public class CandidateController {
 			return new JSONObject(newCandidate).toString().getBytes("UTF-8");
 		} catch (UnsupportedEncodingException e) {
 			return "".getBytes();
-		} catch (JSONException e) {
+		} catch (Exception e) {
 			return "".getBytes();
 		}
 	}
