@@ -44,14 +44,14 @@ public class PasswordController {
 
     // Trả về danh sách các Candidate ở trong bảng Candidate
     @RequestMapping(value="/getallcandidate", method = RequestMethod.GET)
-    public byte[] getallCandidate(){
+    public List<Candidate> getallCandidate(){
         List<Candidate> allCandidates = passwordService.getAll();
-        try {
-            return (new JSONArray(allCandidates)).toString().getBytes("UTF-8");
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "".getBytes();
+        List<Candidate> rs = new ArrayList<Candidate>();
+
+        for(Candidate c : allCandidates){
+            rs.add(c.convert());
         }
+        return rs;
     }
 
     @RequestMapping(value = "/getString",method = RequestMethod.GET)
@@ -59,7 +59,13 @@ public class PasswordController {
     {
 
         List<Candidate> list = new ArrayList<>();
-        list = passwordService.getAll();
+        Candidate candidate = new Candidate();
+        candidate.setEmail("abc");
+        Candidate candidate1 = new Candidate();
+        candidate.setEmail("abcfffff");
+
+        list.add(candidate);
+        list.add(candidate1);
         return list;
     }
 

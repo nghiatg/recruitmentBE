@@ -40,8 +40,9 @@ public class PasswordServiceImpl implements PasswordService {
     }
 
     @Override
-    public Candidate getCandidateByEmail(String email) {
-        return null;
+    public List<Candidate> getCandidateByEmail(String email) {
+        return candidateRepo.findByEmail(email);
+//        return null;
     }
 
     @Override

@@ -13,6 +13,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import com.google.gson.*;
+import org.json.JSONObject;
 
 @Entity
 @Table(name = "ungvien")
@@ -27,12 +29,12 @@ public class Candidate {
 
 	@Column(name = "password")
 	private String password;
-	
+
 	@Column(name = "sdt")
 	private String sdt;
 	
 	@Column(name = "email")
-	private String email;
+	private String email; //findByEmail
 	
 	@Column(name = "diachi")
 	private String diaChi;
@@ -53,6 +55,13 @@ public class Candidate {
 	
 	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "ungVien")
 	private List<Company> congTy = new ArrayList<>();
+
+
+	// check lai
+	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@JoinTable(name = "ungvien_kinang", joinColumns = { @JoinColumn(name = "ungVienId") }, inverseJoinColumns = {
+			@JoinColumn(name = "kinangId") })
+	private List<Skill> kiNang = new ArrayList<>();
 	
 	public long getUngVienId() {
 		return ungVienId;
@@ -121,5 +130,23 @@ public class Candidate {
 		this.congTy = congTy;
 	}
 	
-	
+	public String convertToJson(){
+		Candidate c = new Candidate();
+		c.setEmail(this.getEmail());
+		c.setUngVienId(this.getUngVienId());
+		c.setTenUngVien(this.getTenUngVien());
+		c.setPassword(this.getPassword());
+		c.setDiaChi(this.getDiaChi());
+		return (new JSONObject(c)).toString();
+	}
+
+	public Candidate convert(){
+		Candidate c = new Candidate();
+		c.setEmail(this.getEmail());
+		c.setUngVienId(this.getUngVienId());
+		c.setTenUngVien(this.getTenUngVien());
+		c.setPassword(this.getPassword());
+		c.setDiaChi(this.getDiaChi());
+		return c;
+	}
 }

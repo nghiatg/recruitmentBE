@@ -29,6 +29,9 @@ public class Skill {
 
 	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "kiNang")
 	private List<Job> tinTuyenDung = new ArrayList<>();
+
+	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "kiNang")
+	private List<Candidate> ungVien = new ArrayList<>();
 	
 	public long getKinangId() {
 		return kinangId;

@@ -8,7 +8,7 @@ import java.util.Optional;
 public interface PasswordService {
     public boolean confirmPass(Candidate candidate, String pass);
     public void addAcount(Candidate candidate);
-    public Candidate getCandidateByEmail(String email);
+    public List<Candidate> getCandidateByEmail(String email);
     public Optional<Candidate> getCandidateById(long id);
     public List<Candidate> getAll();
 }

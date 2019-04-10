@@ -10,5 +10,6 @@ import com.example.demo.model.Candidate;
 @Repository
 public interface CandidateRepository extends JpaRepository<Candidate, Integer> {
 	public List<Candidate> findAll();
+	public List<Candidate> findByEmail(String email);
 
 }
